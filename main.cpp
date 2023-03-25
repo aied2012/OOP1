@@ -66,7 +66,7 @@ int main(int argc, char* argv[]){
             cout << likely << endl;
             for(int c = 1; c < nb_models; c++){
                 
-                likely = likelihood(Mmodels[j], current_test);
+                likely = likelihood(Mmodels[c], current_test);
                 cout << model_names[c] + ":";
 
                 if(likely == 0){
