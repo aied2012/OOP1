@@ -5,7 +5,7 @@
 #include <string>
 #include <cmath>
 
-using namespace std;
+
 
 typedef std::set<char> Alphabet;
 typedef std::map<std::string, unsigned int> Model;
