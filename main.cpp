@@ -56,17 +56,36 @@ int main(int argc, char* argv[]){
             for (int x=0; x < int(current_test.length()); x++){
                 tolower(current_test[x]);
             }
-            cout << "test " << b+1 << " :" << endl;
+            cout << argv[j] << " :" << endl;
             
             
-            double likely = likelihood(Mmodels[0], current_test);
+            double likely;
+            try {
+                likely = likelihood(Mmodels[0], current_test);
+            }
+            catch (const exception& e) {
+                
+                likely = 0;
+            }
             double max = likely;
             cout << model_names[0] + ": ";
                 
-            cout << likely << endl;
+            if(likely == 0){
+                cout << '-' << endl;
+                }
+            else{
+                cout << likely << endl;
+            }
+
             for(int c = 1; c < nb_models; c++){
                 
-                likely = likelihood(Mmodels[c], current_test);
+                try {
+                    likely = likelihood(Mmodels[c], current_test);
+                }
+                catch (const exception& e) {
+                    
+                    likely = 0;
+                }
                 cout << model_names[c] + ":";
 
                 if(likely == 0){
