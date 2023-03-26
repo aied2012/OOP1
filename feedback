@@ -1,0 +1,279 @@
+This automated test script will try to check that your submission
+looks like a valid one.
+
+It is by no mean exhaustive, **do your own tests!**
+
+If you see something funky, please tell the TA!
+
+* Initializing the environment...
+* Trying to decompress your archive...
+s187215/
+s187215/markov_model.hpp
+s187215/main.cpp
+s187215/Makefile
+s187215/markov_model.cpp
+* Checking presence of required files...
+* Copying our own main into s187215...
+* Copying our own makefile into s187215...
+* Checking you are not using class...
+* Trying to compile the application...
+make: Entering directory '/vagrant/s187215'
+mkdir -p build
+g++ -std=c++14 -O3 -pedantic -Wall -Wextra markov_model.cpp -MM -MT build/markov_model.o -MF build/markov_model.d
+g++ -std=c++14 -O3 -pedantic -Wall -Wextra -c -o build/submit.o submit.cpp
+g++ -std=c++14 -O3 -pedantic -Wall -Wextra -c -o build/markov_model.o markov_model.cpp
+g++ -std=c++14 -O3 -pedantic -Wall -Wextra -o submit build/submit.o build/markov_model.o
+make: Leaving directory '/vagrant/s187215'
+* Running a few tests, to check if your code at least seems OK...
+------------------------------------------------------------
+Testing tests/basic_test_1 (order=1)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_1 (order=3)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_1 (order=5)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_2 (order=1)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_2 (order=3)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_2 (order=5)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_3 (order=1)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_3 (order=3)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_3 (order=5)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_4 (order=1)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_4 (order=3)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_4 (order=5)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_5 (order=1)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_5 (order=3)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_5 (order=5)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_6 (order=1)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_6 (order=3)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_6 (order=5)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_7 (order=1)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_7 (order=3)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_7 (order=5)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_8 (order=1)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_8 (order=3)...
+OK
+------------------------------------------------------------
+Testing tests/basic_test_8 (order=5)...
+OK
+------------------------------------------------------------
+Testing tests/invalid1 (order=1)...
+Your program returned true when training the markov model of order 1, although an error was expected.
+
+Input:
+ Training Data:
+invalid1
+t
+
+invalid2
+ttttt
+
+
+Input:
+ Testing Data:
+tttt
+
+aaaaa
+
+
+Your markov model of order 1 differs from expected one.
+
+Input:
+ Training Data:
+invalid1
+t
+
+invalid2
+ttttt
+
+
+Input:
+ Testing Data:
+tttt
+
+aaaaa
+
+
+
+Your markov model :
+[DEBUG] Trained Markov Models for invalid1:
+	Alphabet: 't' 
+	Model:
+		't'->1
+		'tt'->1
+
+[DEBUG] Trained Markov Models for invalid2:
+	Alphabet: 't' 
+	Model:
+		't'->5
+		'tt'->5
+
+
+Expected markov model details:
+
+
+Test failed!
+------------------------------------------------------------
+Testing tests/invalid1 (order=3)...
+OK
+------------------------------------------------------------
+Testing tests/invalid1 (order=5)...
+OK
+------------------------------------------------------------
+Testing tests/invalid2 (order=1)...
+OK
+------------------------------------------------------------
+Testing tests/invalid2 (order=3)...
+Your likelihood results with markov model of order 3 differs from expected one.
+
+Input:
+ Training Data:
+invalid1
+taaaaaaa
+
+invalid2
+ttttt
+
+Input:
+ Testing Data:
+ttttzz
+
+aa
+
+
+
+Your likelihood :
+[TEST] Likelihood for content of tests/invalid2/tests/test_invalid1.txt:
+ invalid1: domain error
+ invalid2: domain error
+[TEST] Likelihood for content of tests/invalid2/tests/test_invalid2.txt:
+ invalid1: 0.76214
+ invalid2: domain error
+
+Expected likelihood:
+[TEST] Likelihood for content of tests/invalid2/tests/test_invalid1.txt:
+ invalid1: domain error
+ invalid2: domain error
+[TEST] Likelihood for content of tests/invalid2/tests/test_invalid2.txt:
+ invalid1: length error
+ invalid2: length error
+
+
+Test failed!
+------------------------------------------------------------
+Testing tests/invalid2 (order=5)...
+Your program returned true when training the markov model of order 5, although an error was expected.
+
+Input:
+ Training Data:
+invalid1
+taaaaaaa
+
+invalid2
+ttttt
+
+
+Input:
+ Testing Data:
+ttttzz
+
+aa
+
+
+Your markov model of order 5 differs from expected one.
+
+Input:
+ Training Data:
+invalid1
+taaaaaaa
+
+invalid2
+ttttt
+
+
+Input:
+ Testing Data:
+ttttzz
+
+aa
+
+
+
+Your markov model :
+[DEBUG] Trained Markov Models for invalid1:
+	Alphabet: 'a' 't' 
+	Model:
+		'aaaaa'->3
+		'aaaaaa'->2
+		'aaaaat'->1
+		'aaaat'->1
+		'aaaata'->1
+		'aaata'->1
+		'aaataa'->1
+		'aataa'->1
+		'aataaa'->1
+		'ataaa'->1
+		'ataaaa'->1
+		'taaaa'->1
+		'taaaaa'->1
+
+[DEBUG] Trained Markov Models for invalid2:
+	Alphabet: 't' 
+	Model:
+		'ttttt'->5
+		'tttttt'->5
+
+
+Expected markov model details:
+
+
+Test failed!
+------------------------------------------------------------
+Too many errors. Skipping remaining tests.
+
+* Tests finished. Passed 27 over 30.
+
+You submission presents some serious issues.
+Beware, you are likely to get zero mark unless you improve!
+Check the above error messages for improvements to make.
