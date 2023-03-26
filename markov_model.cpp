@@ -40,31 +40,28 @@ double laplace(const Markov_model& Mmodel, const std::string& test){
     // if(Mmodel.order > test.length()){
     //     throw length_error("The order is not compatible with the Training set");
     // }
-    try {
-        if (Mmodel.order > test.length()) {
-            //cout << c << endl;
-            throw length_error("The order is not compatible with the Training set");
-            
-        }
-        }
-    catch (const length_error& e) {
-        // cerr << "Error: " << e.what() << endl;
-        return 0;
+    
+    if (Mmodel.order > test.length()) {
+        //cout << c << endl;
+        throw length_error("The order is not compatible with the Training set");
         
     }
+        
+    
     //CHECKING THE DOMAIN
     for(char c : test){
         // if(Mmodel.alphabet.count(c) == 0){
         //     cout << "-" << endl;
         //     throw domain_error("The input data contains symbols not present in the alphabet of the Markov model.");
         // }
-        
+    
         try {
             if (Mmodel.alphabet.count(c) == 0) {
                 
                 throw domain_error("The input data contains symbols that are not present in the alphabet of the Markov model.");
                 
             }
+            
             }
         catch (const domain_error& e) {
             // cerr << "Error: " << e.what() << endl;
@@ -98,6 +95,10 @@ double likelihood(Markov_model &Mmodel, const std::string &test){
     double sumLog = 0.0;
     double laplaceValue = 0.0;
     //cout << int(test.length())<<endl;
+    // for (const auto& elem : Mmodel.alphabet) {
+    //     std::cout << elem << " ";
+    // }
+    // cout << endl;
     for(int i = 0; i < int(test.length()); i++){
         //cout << test_circular.substr(i, Mmodel.order+1)<<endl;
         // cout << laplace(Mmodel, word_circular.substr(i, Mmodel.order+1)) << endl;
@@ -108,10 +109,7 @@ double likelihood(Markov_model &Mmodel, const std::string &test){
         sumLog += log(laplaceValue);
         
     }
-    // for (const auto& elem : Mmodel.alphabet) {
-    //     std::cout << elem << " ";
-    // }
-    //cout << endl;
+    
     return sumLog;
 }
 
