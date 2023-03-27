@@ -98,7 +98,7 @@ double likelihood(Markov_model &Mmodel, const std::string &test){
 
     string test_circular;
 
-    if(Mmodel.order - test.length() == 1){
+    if(Mmodel.order - test.length() >= 1){
         
         test_circular = test + test.substr(0,test.length()-1);
 
