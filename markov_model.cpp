@@ -108,8 +108,6 @@ double likelihood(Markov_model &Mmodel, const std::string &test){
 
     }
     
-    cout << test_circular.length() << endl;
-    cout << test_circular << endl;
     double sumLog = 0.0;
     double laplaceValue = 0.0;
     
